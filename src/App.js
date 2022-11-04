@@ -1,13 +1,24 @@
-import './index.scss';
+import React, { useState } from "react";
+import styles from "./assets/sass/index.module.scss";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const IncreaseCount = (increase) => {
+    setCount(count + increase);
+  };
+
   return (
-    <div className="App">
+    <div className={styles.App}>
       <div>
         <h2>Счетчик:</h2>
-        <h1>0</h1>
-        <button className="minus">- Минус</button>
-        <button className="plus">Плюс +</button>
+        <h1>{count}</h1>
+        <button onClick={() => IncreaseCount(-1)} className={styles.minus}>
+          - Минус
+        </button>
+        <button onClick={() => IncreaseCount(1)} className={styles.plus}>
+          Плюс +
+        </button>
       </div>
     </div>
   );
